@@ -1,0 +1,24 @@
+{
+  "name": "sitetheme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-task:scss-compile": "node-sass --output css --source-map true --source-map-root ./ --include-path=node_modules scss",
+    "build-task:autoprefixer": "postcss css/*.css -m --use autoprefixer -d css",
+    "sass:build": "npm-run-all -p build-task:*",
+    "sass:watch": "chokidar 'scss/**/*.scss' -c 'npm run sass:build'",
+    "dev": "npm-run-all -p sass:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^7.1.1",
+    "bootstrap-sass": "^3.3.7",
+    "chokidar-cli": "^1.2.0",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.0.2",
+    "postcss-cli": "^4.1.0"
+  }
+}

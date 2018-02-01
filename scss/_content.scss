@@ -1,0 +1,156 @@
+body {
+  letter-spacing: $letter-spacing-base;
+  &.cke_editable {
+    padding: 1em;
+  }
+}
+
+.container {
+  max-width: 100%;
+  @include large {
+    width: 100%;
+    max-width: $container-large-desktop;
+  }
+  &.narrow, .make-narrow & {
+    @include large {
+      max-width: 800px + $grid-gutter-width;
+      width: 100%;
+    }
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+a {
+  word-wrap: break-word;
+}
+
+.page-header {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-top: 0;
+}
+
+h1, .h1 {
+  @include tablet {
+    font-size: $desktop-font-size-h1;
+  }
+}
+
+h2, .h2 {
+  @include tablet {
+    font-size: $desktop-font-size-h2;
+  }
+}
+
+h3, .h3 {
+  @include tablet {
+    font-size: $desktop-font-size-h3;
+  }
+}
+
+h4, .h4 {
+  @include tablet {
+    font-size: $desktop-font-size-h4;
+  }
+}
+
+h5, .h5 {
+  @include tablet {
+    font-size: $desktop-font-size-h5;
+  }
+}
+
+h6, .h6 {
+  @include tablet {
+    font-size: $desktop-font-size-h6;
+  }
+}
+
+.lead {
+  @include lead-text;
+}
+
+.small-body {
+  font-size: 14px;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  background-color: transparent;
+  padding: 0;
+  color: $text-color;
+  a {
+    color: $text-color;
+  }
+}
+
+p, ul, ol {
+  margin-bottom: 0;
+  + p, + ol, + ul {
+    margin-top: 0.75em;
+  }
+}
+
+.main-container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  @include desktop {
+    padding-top: 85px;
+    padding-bottom: 85px;
+  }
+}
+
+.page-header {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-top: 0;
+}
+
+.tabs--primary.nav-tabs {
+  margin-bottom: 1.5em;
+}
+
+.assembly {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-size: cover;
+  @include desktop {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  &.no-top-padding {
+    padding-top: 0 !important;
+  }
+  &.no-bottom-padding {
+    padding-bottom: 0 !important;
+  }
+  &.bg-secondary {
+    background-color: $secondary;
+  }
+  &.bg-tertiary {
+    background-color: $tertiary;
+  }
+  &.white-text {
+    color: #FFF;
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      color: inherit;
+    }
+  }
+  &.border-top {
+    border-top: 3px solid $tertiary;
+  }
+  &.border-bottom {
+    border-bottom: 3px solid $tertiary;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto !important;
+}

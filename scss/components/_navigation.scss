@@ -1,0 +1,650 @@
+// Nav settings and mixins
+
+$exposed-items: 3; // # of items exposed on mobile
+$exposed-item-offset: $exposed-items + 1; // don't edit this
+$active-menu-link-color: #555;
+
+$hamburger-line-width: 2px;
+$hamburger-line-spacing: 6px;
+
+@mixin nav-link {
+  display: block;
+  color: $navbar-default-link-color;
+  line-height: 24px;
+  padding: 10px 15px;
+  transition-duration: 200ms;
+  position: relative;
+  @include nav-break {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+  &:hover, &:focus {
+    color: #333;
+    text-decoration: none;
+  }
+}
+
+.masthead {
+  .nav {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    > li {
+      padding-left: $grid-gutter-width/2;
+      padding-right: $grid-gutter-width/2;
+      > a {
+        padding-left: 0;
+        padding-right: 0;
+        @include desktop {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+        &:hover, &:focus {
+          &:after {
+            transform: scaleX(1);
+          }
+        }
+        &:after {
+          content: '';
+          display: none;
+          width: 100%;
+          height: 3px;
+          background-color: $primary;
+          transform: scaleX(0);
+          transition: 200ms ease-in-out;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          @include tablet {
+            display: block;
+          }
+        }
+        &.active, &.is-active {
+          &:after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+  .phone-block {
+    &.desktop {
+      display: none;
+      text-align: right;
+      color: $primary;
+      @include tablet {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: $grid-gutter-width/2;
+      }
+      @include desktop {
+        position: static;
+        display: table-cell;
+        vertical-align: middle;
+        width: 200px;
+      }
+      @include large {
+        font-size: 18px;
+        width: 220px;
+      }
+      .phone {
+        font-weight: bold;
+        margin-top: 0;
+        letter-spacing: 0.1em;
+        .phone-text {
+          display: none;
+          @include desktop {
+            display: inline;
+          }
+        }
+        .phone-link {
+          color: inherit;
+          @include desktop {
+            display: none;
+          }
+        }
+      }
+    }
+    &.mobile {
+      text-align: center;
+      float: right;
+      margin-top: 7px;
+      @include tablet {
+        display: none;
+
+      }
+    }
+    a {
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+      }
+    }
+    .icon {
+      font-size: 120%;
+    }
+    .text {
+      display: block;
+      font-size: 11px;
+    }
+  }
+  .logo {
+    width: 50%;
+    max-width: 170px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    @include tablet {
+      max-width: 200px;
+    }
+    @include desktop {
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+    }
+  }
+  .top-bar {
+    display: none;
+    text-align: right;
+    @include desktop {
+      display: block;
+    }
+    .search-link {
+      padding: 10px $grid-gutter-width/2;
+      text-transform: uppercase;
+      font-size: 12px;
+      display: inline-block;
+      color: $text-color;
+      &:hover, &:active, &:focus {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      span {
+        margin-left: 1em;
+      }
+    }
+  }
+
+  .nav-wrapper {
+    @include desktop {
+      margin-left: -$grid-gutter-width/2;
+      margin-right: -$grid-gutter-width/2;
+    }
+  }
+
+  .region-top-bar {
+    @include desktop {
+      display: inline-block;
+    }
+  }
+
+  #block-topbarlinks, #block-topbarlinks-2 {
+    text-transform: uppercase;
+    font-size: 12px;
+    .nav {
+      margin-left: -$grid-gutter-width/2;
+      margin-right: -$grid-gutter-width/2;
+      @include desktop {
+        margin: 0;
+      }
+      > li {
+        display: inline-block;
+        padding: 5px $grid-gutter-width/2;
+        > a {
+          padding: 0;
+          color: $text-color;
+          &:hover, &:active, &:focus {
+            background-color: transparent;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  #block-topbarlinks-2 {
+    @include tablet {
+      .nav {
+        > li {
+          padding: 0;
+          display: block;
+          > a {
+            padding: 10px $grid-gutter-width/2;
+            &:hover, &:focus, &:active {
+              background-color: rgba(0,0,0,0.03);
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+}
+.navbar-main {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin-bottom: 0;
+  background-color: #FFF;
+
+  .navbar-brand {
+    margin-left: 0;
+  }
+
+  .nav-cta {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    line-height: 1;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    border-radius: 0;
+    @include desktop {
+      float: right;
+      width: auto;
+      margin-right: 0;
+      margin-top: 0.5em;
+    }
+    &.mobile {
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+  .search-block-form {
+    padding: 15px 0;
+    font-size: 14px;
+    .form-group {
+      margin-bottom: 0;
+      background-color: #E3E4E6;
+      overflow: hidden;
+    }
+    .form-actions {
+      margin-top: 0;
+    }
+    .description, .help-block {
+      display: none;
+    }
+    input {
+      background-color: transparent;
+      border-color: transparent;
+      color: $text-color;
+      height: auto;
+      @include placeholder(transparent);
+      padding: 5px 12px;
+      line-height: 1;
+    }
+    .input-group {
+      width: 100%;
+    }
+    .input-group-btn {
+      width: auto;
+      position: absolute;
+      right: 50%;
+      top: 0;
+      text-align: center;
+      transform: translateX(50%);
+      @include transition-duration(200ms);
+      @include tablet {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .btn {
+      font-size: 14px;
+      color: $text-color;
+      background-color: transparent;
+      border-color: transparent;
+      padding: 3px 12px;
+      overflow: visible;
+      &:focus, &:active {
+        outline: 0;
+        border-color: transparent;
+      }
+      &:before {
+        background-color: transparent;
+      }
+      &:after {
+        position: static;
+        display: inline;
+        vertical-align: middle;
+        content: 'Search';
+        font-weight: normal;
+        margin-left: 10px;
+        @include transition-duration(150ms);
+        opacity: 1;
+        background-color: transparent;
+        width: auto;
+      }
+    }
+
+    // When active
+    input:focus, input.filled {
+      border-color: transparent;
+      box-shadow: none;
+      position: relative;
+      z-index: 1;
+      + .input-group-btn {
+        z-index: 100;
+        right: 0;
+        transform: translateX(65%);
+        @include tablet {
+          transform: translateX(60%);
+        }
+        .btn {
+          &:after {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .main-nav-wrapper {
+    @include desktop {
+      display: table;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+
+  .navbar-header {
+    @include desktop {
+      display: table-cell;
+      width: 200px;
+      vertical-align: middle;
+      float: none;
+    }
+    .nav-cta {
+      display: none;
+      @include desktop {
+        display: block;
+      }
+    }
+  }
+  .parent-link {
+    padding-right: $grid-gutter-width/2;
+    position: relative;
+    @include tablet {
+      padding-right: 0;
+    }
+    > .simple-dropdown-toggle {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+      > span {
+        font-size: 60%;
+        padding: 10px 20px;
+        margin-top: -7px;
+        @include tablet {
+          padding: 10px;
+          padding-right: $grid-gutter-width/2;
+        }
+      }
+    }
+    > a {
+      @include nav-link;
+      display: inline-block;
+      @include tablet {
+        padding-right: 0;
+      }
+    }
+  }
+  .simple-dropdown {
+    position: relative;
+    transition-duration: 200ms;
+    &:hover {
+      @include desktop {
+        > ul {
+          display: block;
+        }
+      }
+    }
+    &.open {
+      background-color: #e7e7e7;
+    }
+    &.active, &.is-active, > .simple-dropdown-menu > li > a.active, > .simple-dropdown-menu > li > a.is-active {
+      color: $active-menu-link-color;
+      background-color: #e7e7e7;
+      @include tablet {
+        background-color: transparent;
+      }
+      > .parent-link > a {
+        color: $active-menu-link-color;
+      }
+    }
+    .simple-dropdown-toggle {
+      cursor: pointer;
+      @include desktop {
+        display: none;
+      }
+    }
+    .simple-dropdown-menu {
+      display: none;
+      list-style: none;
+      padding: 0;
+      @include tablet {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        list-style: none;
+        font-size: 16px;
+        text-align: left;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        background-clip: padding-box;
+      }
+      > li {
+        > a {
+          @include nav-link;
+        }
+      }
+    }
+    &.open {
+      .simple-dropdown-menu {
+        display: block;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .container {
+    @include tablet {
+      position: relative;
+    }
+  }
+
+  .navbar-toggle {
+    position: relative;
+    padding: $grid-gutter-width/2;
+    padding-bottom: 24px;
+    border: none;
+    margin: 0;
+    border-radius: 0;
+    @include transition(all 150ms ease-in-out);
+    @include tablet {
+      position: absolute;
+      top: 0;
+      right: $grid-gutter-width/2;
+    }
+    &:focus, &:hover {
+      background-color: transparent;
+    }
+    &[aria-expanded="true"] {
+      background-color: #F2F2F2;
+      .icon-bar {
+        position: relative;
+        &:nth-child(2) {
+          transform: rotate(45deg);
+          top: 8.5px;
+        }
+        &:nth-child(3) {
+          @include opacity(0);
+          margin-top: 14px;
+        }
+        &:last-child {
+          top: -9.5px;
+          margin-top: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .icon-bar {
+      background-color: $headings-color;
+      height: $hamburger-line-width;
+      width: 24px;
+      @include transition(all 150ms ease-in-out);
+      border-radius: 0;
+    + .icon-bar {
+        margin-top: $hamburger-line-spacing;
+      }
+    }
+  }
+
+  .navbar-collapse {
+    background-color: #F2F2F2;
+    border-top: none;
+    @include tablet {
+      position: absolute;
+      top: 50px;
+      right: $grid-gutter-width/2;
+      width: 250px;
+      z-index: 10;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @include desktop {
+      position: static;
+      background-color: transparent;
+      display: table-cell !important;
+      padding: 0;
+      vertical-align: middle;
+      text-align: right;
+      width: auto;
+      padding-left: 60px;
+    }
+    .region-navigation-collapsible {
+      .navbar-nav {
+        font-size: 14px;
+        @include tablet {
+          display: none;
+        }
+        @include desktop {
+          display: inline-block;
+          float: none;
+          vertical-align: middle;
+          margin-right: -$grid-gutter-width/2;
+        }
+        > li {
+          &:nth-child(-n+#{$exposed-items}) {
+            display: none;
+            @include tablet {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    .search-block-form {
+      @include nav-break {
+        display: none;
+      }
+    }
+  }
+  .exposed-nav {
+    font-size: 14px;
+    margin-left: -$grid-gutter-width/2;
+    margin-right: -$grid-gutter-width/2;
+    text-transform: none;
+    font-weight: normal;
+    @include desktop {
+      display: none;
+    }
+    > nav {
+      transition-duration: 200ms;
+      border-top: 2px solid #e7e7e7;
+      overflow: hidden;
+      @include tablet {
+        overflow: visible;
+        border-top: none;
+      }
+    }
+    .navbar-nav {
+      margin: 0;
+      display: table;
+      width: 100%;
+      @include tablet {
+        display: block;
+      }
+      > li {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        border-left: 1px solid #e7e7e7;
+        border-right: 1px solid #e7e7e7;
+        width: 1/$exposed-items * 100%;
+        font-weight: bold;
+        @include tablet {
+          width: auto;
+          text-align: left;
+          display: inline-block;
+          border: none;
+        }
+        &:first-child {
+          border-left: none;
+        }
+        &:nth-child(#{$exposed-items}) {
+          border-right: none;
+        }
+        &:nth-child(n+#{$exposed-item-offset}) {
+          display: none;
+          @include tablet {
+            display: inline-block;
+          }
+        }
+        &:last-child {
+          border-right: none;
+        }
+        > a {
+          font-weight: normal;
+          display: block;
+          width: 100%;
+          line-height: 1.1;
+          font-size: 12px;
+          text-transform: none;
+          @include tablet {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  // Collapse exposed nav when hamburger is open
+  .navbar-collapse[aria-expanded="true"] + .exposed-nav {
+    > nav {
+      border: none;
+      height: 0;
+      @include opacity(0);
+      @include tablet {
+        @include opacity(1);
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.social-buttons {
+  margin-bottom: 1em;
+  @include small {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-bottom: 0;
+  }
+}
+.social-btn {
+  .fb-share-button {
+    display: inline-block;
+    vertical-align: top;
+    > span {
+      vertical-align: top !important;
+    }
+  }
+}

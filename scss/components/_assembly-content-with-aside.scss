@@ -1,0 +1,16 @@
+.assembly {
+  &.left {
+    .row {
+      >div {
+        @include tablet {
+          left: 33.33333%;
+        }
+      }
+      aside {
+        @include tablet {
+          right: 66.66667%
+        }
+      }
+    }
+  }
+}

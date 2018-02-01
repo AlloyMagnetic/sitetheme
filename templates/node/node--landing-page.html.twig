@@ -1,0 +1,58 @@
+{#
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{% set body = content|without('field_form', 'field_form_title')|render ? TRUE : FALSE %}
+{% set form = content.field_form|render or content.field_form_title|render ? TRUE : FALSE %}
+
+<article{{ attributes.addClass(classes) }}>
+
+  {% if body and form %}
+    <div class="row">
+      <div class="col-sm-6 col-lg-7">
+  {% endif %}
+
+        {{ title_prefix }}
+        {% if not page %}
+          <h2{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+          </h2>
+        {% endif %}
+        {% if page %}
+          <h1{{ title_attributes }}>
+            {{ label }}
+          </h1>
+        {% endif %}
+        {{ title_suffix }}
+
+        <div{{ content_attributes.addClass('content') }}>
+          {{ content|without('field_form', 'field_form_title') }}
+        </div>
+  {% if body and form %}
+      </div>
+    <div class="col-sm-6 col-lg-5">
+  {% endif %}
+
+      {% if form %}
+        <div class="form-wrapper">
+          {% if content.field_form_title|render %}
+          <h2>{{ content.field_form_title }}</h2>
+          {% endif %}
+          {{ content.field_form }}
+        </div>
+      {% endif %}
+
+  {% if body and form %}
+      </div>
+    </div>
+  {% endif %}
+
+</article>
