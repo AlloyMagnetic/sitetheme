@@ -82,6 +82,10 @@ p, ul, ol {
     .main-container {
       padding-top: 85px;
       padding-bottom: 85px; } }
+  .main-container.slim {
+    padding-bottom: 1em; }
+    .main-container.slim .tabs--primary.nav-tabs {
+      margin-bottom: 0; }
 
 .page-header {
   padding-bottom: 0;

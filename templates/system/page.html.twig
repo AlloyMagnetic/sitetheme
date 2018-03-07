@@ -74,6 +74,11 @@
 
 {# Main #}
 {% block main %}
+
+  {% if (page.content|render|striptags|trim or page.sidebar_first|render|striptags|trim or page.sidebar_second|render|striptags|trim or page.header|without('pharr_local_actions')|render|striptags|trim or page.highlighted|render|striptags|trim or page.help|render|striptags|trim) or page.header.pharr_local_actions|render|trim %}
+
+  {% set container = page.header.pharr_local_tasks|render|trim and not (page.content|render|striptags|trim or page.sidebar_first|render|striptags|trim or page.sidebar_second|render|striptags|trim or page.header|without('pharr_local_tasks')|render|striptags|trim or page.highlighted|render|striptags|trim or page.help|render|striptags|trim) ? container ~ ' slim'  : container %}
+
   <div role="main" class="main-container {{ container }} {{ container_width }} js-quickedit-main-content">
     <div class="row">
 
@@ -138,6 +143,7 @@
       {% endif %}
     </div>
   </div>
+  {% endif %}
 {% endblock %}
 
 {% if page.sections %}

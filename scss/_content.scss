@@ -103,6 +103,12 @@ p, ul, ol {
     padding-top: 85px;
     padding-bottom: 85px;
   }
+  &.slim {
+    padding-bottom: 1em;
+    .tabs--primary.nav-tabs {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .page-header {
