@@ -77,19 +77,10 @@
   <div role="main" class="main-container {{ container }} {{ container_width }} js-quickedit-main-content">
     <div class="row">
 
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          <div class="col-sm-12" role="heading">
-            {{ page.header }}
-          </div>
-        {% endblock %}
-      {% endif %}
-
       {# Sidebar First #}
       {% if page.sidebar_first %}
         {% block sidebar_first %}
-          <aside class="sidebar col-sm-3" role="complementary">
+          <aside class="sidebar left col-sm-5" role="complementary">
             {{ page.sidebar_first }}
           </aside>
         {% endblock %}
@@ -99,13 +90,22 @@
       {%
         set content_classes = [
           page.sidebar_first and page.sidebar_second ? 'col-sm-6',
-          page.sidebar_first and page.sidebar_second is empty ? 'col-sm-9',
-          page.sidebar_second and page.sidebar_first is empty ? 'col-sm-9',
+          page.sidebar_first and page.sidebar_second is empty ? 'col-sm-7 col-sm-push-5 content-col',
+          page.sidebar_second and page.sidebar_first is empty ? 'col-sm-7 content-col',
           page.sidebar_first is empty and page.sidebar_second is empty and not reserve_sidebar ? 'col-sm-12',
-          reserve_sidebar ? 'col-sm-9',
+          reserve_sidebar ? 'col-sm-7 content-col',
         ]
       %}
       <section{{ content_attributes.addClass(content_classes) }}>
+
+        {# Header #}
+        {% if page.header %}
+          {% block header %}
+            <div role="heading">
+              {{ page.header }}
+            </div>
+          {% endblock %}
+        {% endif %}
 
         {# Highlighted #}
         {% if page.highlighted %}
@@ -131,7 +131,7 @@
       {# Sidebar Second #}
       {% if page.sidebar_second %}
         {% block sidebar_second %}
-          <aside class="col-sm-3" role="complementary">
+          <aside class="col-sm-5 sidebar right" role="complementary">
             {{ page.sidebar_second }}
           </aside>
         {% endblock %}

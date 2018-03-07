@@ -48,7 +48,7 @@ function sitetheme_preprocess_page(&$variables) {
   }
 
   // Pull out assemblies to page level
-  foreach(['sections', 'billboard', 'sidebar_ctas'] as $field) {
+  foreach(['sections', 'billboard', 'sidebar_ctas', 'sidebar'] as $field) {
     $fieldname = 'field_' . $field;
     if ($node && isset($node->$fieldname)) {
       $viewBuilder = \Drupal::entityTypeManager()->getViewBuilder('node');
@@ -60,6 +60,10 @@ function sitetheme_preprocess_page(&$variables) {
 
   if (isset($variables['page']['sidebar_ctas']['#items'])) {
     $variables['page']['sidebar_second']['sidebar_ctas'] = $variables['page']['sidebar_ctas'];
+    $variables['full_width'] = TRUE;
+  }
+  if (isset($variables['page']['sidebar']['#items'])) {
+    $variables['page']['sidebar_second']['sidebar'] = $variables['page']['sidebar'];
     $variables['full_width'] = TRUE;
   }
 

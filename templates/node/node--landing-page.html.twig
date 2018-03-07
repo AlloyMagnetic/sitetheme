@@ -10,49 +10,36 @@
     'clearfix',
   ]
 %}
-{% set body = content|without('field_form', 'field_form_title')|render ? TRUE : FALSE %}
-{% set form = content.field_form|render or content.field_form_title|render ? TRUE : FALSE %}
 
 <article{{ attributes.addClass(classes) }}>
 
-  {% if body and form %}
+  {% if content.field_poster_image|render %}
     <div class="row">
-      <div class="col-sm-6 col-lg-7">
+      <div class="col-md-6 col-lg-7 body-col">
   {% endif %}
-
         {{ title_prefix }}
         {% if not page %}
           <h2{{ title_attributes }}>
             <a href="{{ url }}" rel="bookmark">{{ label }}</a>
           </h2>
+        {% else %}
+        <h1 class="page-header">{{ label }}</h1>
         {% endif %}
-        {% if page %}
-          <h1{{ title_attributes }}>
-            {{ label }}
-          </h1>
-        {% endif %}
+
         {{ title_suffix }}
 
         <div{{ content_attributes.addClass('content') }}>
-          {{ content|without('field_form', 'field_form_title') }}
+          {{ content|without('field_sidebar', 'field_poster_image', 'field_sections', 'field_billboard') }}
         </div>
-  {% if body and form %}
+
+    {% if content.field_poster_image|render %}
       </div>
-    <div class="col-sm-6 col-lg-5">
-  {% endif %}
+      <div class="col-md-6 col-lg-5 poster-image-col">
+        {{ content.field_poster_image }}
+    {% endif %}
 
-      {% if form %}
-        <div class="form-wrapper">
-          {% if content.field_form_title|render %}
-          <h2>{{ content.field_form_title }}</h2>
-          {% endif %}
-          {{ content.field_form }}
-        </div>
-      {% endif %}
-
-  {% if body and form %}
+    {% if content.field_poster_image|render %}
       </div>
     </div>
-  {% endif %}
-
+    {% endif %}
 </article>

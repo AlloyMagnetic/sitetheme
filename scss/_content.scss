@@ -148,9 +148,47 @@ p, ul, ol {
   &.border-bottom {
     border-bottom: 3px solid $tertiary;
   }
+  .section-title {
+    margin-top: 0;
+  }
 }
 
 img {
   max-width: 100%;
   height: auto !important;
+}
+
+.sidebar {
+  margin-bottom: -40px;
+  margin-top: 40px;
+  margin-left: -$grid-gutter-width/2;
+  margin-right: -$grid-gutter-width/2;
+  @include tablet {
+    margin: 0;
+  }
+  &.right {
+    @include desktop {
+      padding-left: 50px;
+    }
+  }
+  &.left {
+    @include desktop {
+      padding-right: 50px;
+    }
+  }
+  .assembly {
+    padding: 40px $grid-gutter-width/2;
+    background-color: $tertiary;
+    border-top: 3px solid $primary;
+    @include desktop {
+      padding: 40px 35px;
+    }
+    .container {
+      @include tablet {
+        width: 100%;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+  }
 }
