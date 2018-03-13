@@ -21,11 +21,16 @@ function sitetheme_preprocess_page(&$variables) {
 
   $variables['menu'] = $variables['page']['navigation_collapsible'][$theme_name . '_main_menu'];
   $variables['nav_cta'] = FALSE;
+  $variables['nav_inline'] = theme_get_setting('navbar_layout', 'sitetheme') == 'nav_inline' ?: FALSE;
 
   // Variables for phone block
-  $variables['phone_block'] = TRUE;
-  $variables['phone_formatted'] = '(123) 456-7890';
-  $variables['phone_unformatted'] = preg_replace("/[^A-Za-z0-9]/", "", $variables['phone_formatted']);
+  $variables['phone_block'] = FALSE;
+  $phone = theme_get_setting('phone_number', $theme_name);
+  if ($phone) {
+    $variables['phone_block'] = TRUE;
+    $variables['phone_formatted'] = theme_get_setting('phone_number', $theme_name);
+    $variables['phone_unformatted'] = preg_replace("/[^A-Za-z0-9]/", "", $variables['phone_formatted']);
+  }
 
   $variables['site_logo'] = [
     '#theme' => 'image',

@@ -1,37 +1,16 @@
-// Nav settings and mixins
-
-$exposed-items: 3; // # of items exposed on mobile
-$exposed-item-offset: $exposed-items + 1; // don't edit this
-$active-menu-link-color: #555;
-
-$hamburger-line-width: 2px;
-$hamburger-line-spacing: 6px;
-
-@mixin nav-link {
-  display: block;
-  color: $navbar-default-link-color;
-  line-height: 24px;
-  padding: 10px 15px;
-  transition-duration: 200ms;
-  position: relative;
-  @include nav-break {
-    padding-top: 13px;
-    padding-bottom: 13px;
-  }
-  &:hover, &:focus {
-    color: #333;
-    text-decoration: none;
-  }
-}
-
 .masthead {
+
+  // Nav links
   .nav {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     > li {
       padding-left: $grid-gutter-width/2;
       padding-right: $grid-gutter-width/2;
+      &.active, &:hover {
+        background-color: rgba(0,0,0,0.05);
+      }
       > a {
         padding-left: 0;
         padding-right: 0;
@@ -39,34 +18,103 @@ $hamburger-line-spacing: 6px;
           padding-top: 8px;
           padding-bottom: 8px;
         }
-        &:hover, &:focus {
-          &:after {
-            transform: scaleX(1);
-          }
+      }
+    }
+  }
+
+  .exposed-nav {
+    @include nav-break {
+      margin-top: $grid-gutter-width/2;
+    }
+  }
+  .exposed-nav nav {
+    @include tablet {
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: -$grid-gutter-width/2;
+      margin-right: -$grid-gutter-width/2;
+    }
+  }
+  .exposed-nav .nav {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: $navbar-default-border 1px solid;
+    display: flex;
+    @include tablet {
+      justify-content: space-between;
+      border-top: none;
+      width: 100%;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+    &:before, &:after {
+      display: none;
+    }
+    li {
+      display: inline-block;
+      width: 1/$navbar-exposed-items * 100%;
+      text-align: center;
+      border-left: $navbar-default-border 1px solid;
+      @include tablet {
+        width: auto;
+        border: none;
+        display: block;
+        float: none !important;
+      }
+      &.active, &.is-active, &:hover, &:focus {
+        background-color: $tertiary;
+        @include tablet {
+          background-color: transparent;
         }
-        &:after {
-          content: '';
-          display: none;
-          width: 100%;
-          height: 3px;
-          background-color: $primary;
-          transform: scaleX(0);
-          transition: 200ms ease-in-out;
-          position: absolute;
-          bottom: 0;
-          left: 0;
+        > a:after {
           @include tablet {
-            display: block;
-          }
-        }
-        &.active, &.is-active {
-          &:after {
             transform: scaleX(1);
           }
         }
       }
+      > a:after {
+        content: '';
+        display: none;
+        width: 100%;
+        height: 3px;
+        background-color: $primary;
+        transform: scaleX(0);
+        transition: 200ms ease-in-out;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @include tablet {
+          display: block;
+        }
+      }
+      &:first-child {
+        border-left: none;
+      }
+      &:nth-child(#{$navbar-exposed-items}) {
+        border-right: none;
+      }
+      &:nth-child(n+#{$navbar-exposed-item-offset}) {
+        display: none;
+        @include nav-break {
+          display: block;
+        }
+      }
+      > a {
+        font-weight: normal;
+        text-transform: none;
+        display: block;
+        @include tablet {
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+        @include desktop {
+          font-size: 14px;
+        }
+      }
     }
   }
+
+  // Phone CTA
   .phone-block {
     &.desktop {
       display: none;
@@ -75,14 +123,13 @@ $hamburger-line-spacing: 6px;
       @include tablet {
         display: block;
         position: absolute;
-        right: 0;
-        top: $grid-gutter-width/2;
+        right: $navbar-toggle-btn-width + $grid-gutter-width/2;
+        top: 8px;
       }
-      @include desktop {
-        position: static;
-        display: table-cell;
-        vertical-align: middle;
+      @include nav-break {
         width: 200px;
+        right: $grid-gutter-width/2;
+        top: 0;
       }
       @include large {
         font-size: 18px;
@@ -109,7 +156,10 @@ $hamburger-line-spacing: 6px;
     &.mobile {
       text-align: center;
       float: right;
-      margin-top: 7px;
+      margin-top: 10px;
+      position: absolute;
+      right: $navbar-toggle-btn-width;
+      top: 0;
       @include tablet {
         display: none;
 
@@ -128,6 +178,8 @@ $hamburger-line-spacing: 6px;
       font-size: 11px;
     }
   }
+
+  // Logo
   .logo {
     width: 50%;
     max-width: 170px;
@@ -142,6 +194,8 @@ $hamburger-line-spacing: 6px;
       margin: 0;
     }
   }
+
+  // Top bar
   .top-bar {
     display: none;
     text-align: right;
@@ -164,20 +218,11 @@ $hamburger-line-spacing: 6px;
       }
     }
   }
-
-  .nav-wrapper {
-    @include desktop {
-      margin-left: -$grid-gutter-width/2;
-      margin-right: -$grid-gutter-width/2;
-    }
-  }
-
   .region-top-bar {
     @include desktop {
       display: inline-block;
     }
   }
-
   #block-topbarlinks, #block-topbarlinks-2 {
     text-transform: uppercase;
     font-size: 12px;
@@ -221,18 +266,24 @@ $hamburger-line-spacing: 6px;
       display: none;
     }
   }
+
+  .nav-wrapper {
+    @include desktop {
+      margin-left: -$grid-gutter-width/2;
+      margin-right: -$grid-gutter-width/2;
+    }
+  }
 }
+
 .navbar-main {
   border-left: none;
-  border-right: none;
   border-top: none;
-  margin-bottom: 0;
-  background-color: #FFF;
-
+  border-right: none;
   .navbar-brand {
     margin-left: 0;
   }
 
+  // CTA theming
   .nav-cta {
     position: relative;
     z-index: 1;
@@ -242,18 +293,20 @@ $hamburger-line-spacing: 6px;
     padding-top: 0.75em;
     padding-bottom: 0.75em;
     border-radius: 0;
-    @include desktop {
+    @include nav-break {
       float: right;
       width: auto;
       margin-right: 0;
       margin-top: 0.5em;
     }
     &.mobile {
-      @include desktop {
+      @include nav-break {
         display: none;
       }
     }
   }
+
+  // Search bar theming
   .search-block-form {
     padding: 15px 0;
     font-size: 14px;
@@ -281,7 +334,7 @@ $hamburger-line-spacing: 6px;
       width: 100%;
     }
     .input-group-btn {
-      width: auto;
+      width: fit-content;
       position: absolute;
       right: 50%;
       top: 0;
@@ -343,17 +396,10 @@ $hamburger-line-spacing: 6px;
     }
   }
 
-  .main-nav-wrapper {
-    @include desktop {
-      display: table;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-  }
-
   .navbar-header {
+    margin: 0;
+    position: relative;
     @include desktop {
-      display: table-cell;
       width: 200px;
       vertical-align: middle;
       float: none;
@@ -365,6 +411,7 @@ $hamburger-line-spacing: 6px;
       }
     }
   }
+
   .parent-link {
     padding-right: $grid-gutter-width/2;
     position: relative;
@@ -386,265 +433,134 @@ $hamburger-line-spacing: 6px;
       }
     }
     > a {
-      @include nav-link;
       display: inline-block;
       @include tablet {
         padding-right: 0;
       }
     }
   }
-  .simple-dropdown {
-    position: relative;
-    transition-duration: 200ms;
-    &:hover {
-      @include desktop {
-        > ul {
-          display: block;
-        }
-      }
-    }
-    &.open {
-      background-color: #e7e7e7;
-    }
-    &.active, &.is-active, > .simple-dropdown-menu > li > a.active, > .simple-dropdown-menu > li > a.is-active {
-      color: $active-menu-link-color;
-      background-color: #e7e7e7;
-      @include tablet {
-        background-color: transparent;
-      }
-      > .parent-link > a {
-        color: $active-menu-link-color;
-      }
-    }
-    .simple-dropdown-toggle {
-      cursor: pointer;
-      @include desktop {
-        display: none;
-      }
-    }
-    .simple-dropdown-menu {
-      display: none;
-      list-style: none;
-      padding: 0;
-      @include tablet {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1000;
-        display: none;
-        float: left;
-        min-width: 160px;
-        padding: 5px 0;
-        margin: 2px 0 0;
-        list-style: none;
-        font-size: 16px;
-        text-align: left;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-        background-clip: padding-box;
-      }
-      > li {
-        > a {
-          @include nav-link;
-        }
-      }
-    }
-    &.open {
-      .simple-dropdown-menu {
-        display: block;
-      }
-    }
-  }
-
-  .navbar-toggle {
-    display: none;
-  }
 
   .container {
-    @include tablet {
-      position: relative;
-    }
+    position: relative;
   }
 
+  // Hamburger
   .navbar-toggle {
-    position: relative;
-    padding: $grid-gutter-width/2;
-    padding-bottom: 24px;
+    position: absolute;
     border: none;
     margin: 0;
-    border-radius: 0;
     @include transition(all 150ms ease-in-out);
+    border-radius: 0;
+    top: 0;
+    right: -$grid-gutter-width/2;
+    height: 100%;
+    width: $navbar-toggle-btn-width;
     @include tablet {
+      display: block;
       position: absolute;
       top: 0;
-      right: $grid-gutter-width/2;
+    }
+    @include nav-break {
+      display: none;
     }
     &:focus, &:hover {
       background-color: transparent;
     }
+
+    // Hamburger button while open
     &[aria-expanded="true"] {
-      background-color: #F2F2F2;
+      background-color: $tertiary;
+      .icon-bar-wrapper {
+        @include transition(all 150ms ease-in-out);
+      }
       .icon-bar {
-        position: relative;
-        &:nth-child(2) {
+        &:first-child {
           transform: rotate(45deg);
-          top: 8.5px;
+          top: 50%;
+        }
+        &:nth-child(2) {
+          opacity: 0;
         }
         &:nth-child(3) {
-          @include opacity(0);
-          margin-top: 14px;
-        }
-        &:last-child {
-          top: -9.5px;
-          margin-top: 0;
           transform: rotate(-45deg);
+          bottom: 50%;
         }
       }
     }
+    .icon-bar-wrapper {
+      position: relative;
+      height: $navbar-toggle-height;
+      width: $navbar-toggle-icon-bar-width;
+      overflow: hidden;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .icon-bar {
-      background-color: $headings-color;
-      height: $hamburger-line-width;
-      width: 24px;
+      height: $navbar-toggle-icon-bar-height;
+      width: 100%;
       @include transition(all 150ms ease-in-out);
-      border-radius: 0;
-    + .icon-bar {
-        margin-top: $hamburger-line-spacing;
+      margin: 0;
+      left: 0;
+      position: absolute;
+      &:first-child {
+        top: 0;
+        transform-origin: center;
+      }
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &:nth-child(3) {
+        bottom: 0;
+        transform-origin: center;
       }
     }
   }
 
+  // Collapsible nav
   .navbar-collapse {
-    background-color: #F2F2F2;
-    border-top: none;
+    background-color: $tertiary;
+    border-color: $tertiary;
+    position: absolute;
+    top: 59px;
+    right: 0;
+    width: fit-content;
+    z-index: 10;
     @include tablet {
-      position: absolute;
-      top: 50px;
-      right: $grid-gutter-width/2;
-      width: 250px;
-      z-index: 10;
-      margin-left: 0;
-      margin-right: 0;
+      top: 63px;
     }
-    @include desktop {
-      position: static;
-      background-color: transparent;
-      display: table-cell !important;
-      padding: 0;
-      vertical-align: middle;
-      text-align: right;
-      width: auto;
-      padding-left: 60px;
+    @include nav-break {
+      display: none !important;
     }
-    .region-navigation-collapsible {
-      .navbar-nav {
-        font-size: 14px;
-        @include tablet {
-          display: none;
-        }
-        @include desktop {
-          display: inline-block;
-          float: none;
-          vertical-align: middle;
-          margin-right: -$grid-gutter-width/2;
-        }
-        > li {
-          &:nth-child(-n+#{$exposed-items}) {
-            display: none;
-            @include tablet {
-              display: block;
-            }
-          }
-        }
-      }
-    }
-    .search-block-form {
-      @include nav-break {
+    .nav > li {
+      &:nth-child(-n+#{$navbar-exposed-items}) {
         display: none;
+        @include nav-break {
+          display: block;
+        }
       }
+    }
+  }
+}
+
+.navbar-nav-inline {
+  @include nav-break {
+    padding-bottom: $grid-gutter-width/2;
+  }
+  .main-nav-wrapper {
+    @include nav-break {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .phone-block.desktop {
+    @include nav-break {
+      position: static;
     }
   }
   .exposed-nav {
-    font-size: 14px;
-    margin-left: -$grid-gutter-width/2;
-    margin-right: -$grid-gutter-width/2;
-    text-transform: none;
-    font-weight: normal;
-    @include desktop {
-      display: none;
-    }
-    > nav {
-      transition-duration: 200ms;
-      border-top: 2px solid #e7e7e7;
-      overflow: hidden;
-      @include tablet {
-        overflow: visible;
-        border-top: none;
-      }
-    }
-    .navbar-nav {
-      margin: 0;
-      display: table;
-      width: 100%;
-      @include tablet {
-        display: block;
-      }
-      > li {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        border-left: 1px solid #e7e7e7;
-        border-right: 1px solid #e7e7e7;
-        width: 1/$exposed-items * 100%;
-        font-weight: bold;
-        @include tablet {
-          width: auto;
-          text-align: left;
-          display: inline-block;
-          border: none;
-        }
-        &:first-child {
-          border-left: none;
-        }
-        &:nth-child(#{$exposed-items}) {
-          border-right: none;
-        }
-        &:nth-child(n+#{$exposed-item-offset}) {
-          display: none;
-          @include tablet {
-            display: inline-block;
-          }
-        }
-        &:last-child {
-          border-right: none;
-        }
-        > a {
-          font-weight: normal;
-          display: block;
-          width: 100%;
-          line-height: 1.1;
-          font-size: 12px;
-          text-transform: none;
-          @include tablet {
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: bold;
-          }
-        }
-      }
-    }
-  }
-
-  // Collapse exposed nav when hamburger is open
-  .navbar-collapse[aria-expanded="true"] + .exposed-nav {
-    > nav {
-      border: none;
-      height: 0;
-      @include opacity(0);
-      @include tablet {
-        @include opacity(1);
-        height: auto;
-      }
+    @include nav-break {
+      margin-top: 0;
     }
   }
 }
