@@ -3,6 +3,9 @@
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  @include large {
+    max-width: none;
+  }
   &:hover, &:focus, &:active {
     .tile-image {
       transform: scale(1.2);

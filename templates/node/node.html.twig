@@ -31,7 +31,7 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('content') }}>
-    {{ content|without('field_sections', 'field_billboard') }}
+    {{ content|without('field_sections', 'field_billboard', 'field_sidebar') }}
   </div>
 
 </article>

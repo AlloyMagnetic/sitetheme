@@ -17,7 +17,7 @@ function sitetheme_preprocess_page(&$variables) {
   $variables['search_form'] = \Drupal::entityTypeManager()->getViewBuilder('block')->view($form);
 
   $variables['full_width'] = TRUE;
-  $variables['reserve_sidebar'] = TRUE; // makes content go to the left and "reserves" space for a sidebar, even when there isn't one
+  $variables['reserve_sidebar'] = FALSE; // makes content go to the left and "reserves" space for a sidebar, even when there isn't one
 
   $variables['menu'] = $variables['page']['navigation_collapsible'][$theme_name . '_main_menu'];
   $variables['nav_cta'] = FALSE;
