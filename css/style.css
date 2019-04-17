@@ -700,12 +700,14 @@ img {
     @media (min-width: 768px) {
       .page-footer .nav {
         -webkit-column-count: 3;
+           -moz-column-count: 3;
                 column-count: 3;
         max-height: 330px; } }
     .page-footer .nav > li {
       line-height: 2;
       padding: 0 15px;
       -webkit-column-break-inside: avoid;
+         page-break-inside: avoid;
               break-inside: avoid-column; }
       .page-footer .nav > li > a {
         line-height: 1;
@@ -804,7 +806,20 @@ img {
         padding-bottom: 15px; } }
 
 .social-buttons {
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .social-buttons > * {
+    height: 20px;
+    display: block; }
   @media (min-width: 480px) {
     .social-buttons {
       position: absolute;
@@ -812,10 +827,14 @@ img {
       top: 0;
       margin-bottom: 0; } }
 
-.social-btn .fb-share-button {
-  display: inline-block;
-  vertical-align: top; }
-  .social-btn .fb-share-button > span {
+.social-btn {
+  margin-left: 5px; }
+  .social-btn .fb-share-button {
+    display: inline-block;
+    vertical-align: top; }
+    .social-btn .fb-share-button > span {
+      vertical-align: top !important; }
+  .social-btn .IN-widget {
     vertical-align: top !important; }
 
 .billboards {
