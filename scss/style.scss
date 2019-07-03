@@ -22,3 +22,9 @@
 @import "components/assembly-content-with-aside";
 @import "components/landing-page";
 @import "components/assembly-call-to-action";
+
+
+:host {
+  @extend body;
+  height: auto !important;
+}

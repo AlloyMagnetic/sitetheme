@@ -1,9 +1,9 @@
-body {
+body, :host {
   letter-spacing: 0.025em; }
-  body.cke_editable {
+  body.cke_editable, .cke_editable:host {
     padding: 1em; }
 
-html, body {
+html, body, :host {
   height: 100%; }
 
 .dialog-off-canvas-main-canvas {
@@ -1419,4 +1419,7 @@ img {
     .assembly-type-call_to_action .left-col {
       text-align: right;
       padding-right: 30px; } }
+
+:host {
+  height: auto !important; }
 /*# sourceMappingURL=style.css.map */

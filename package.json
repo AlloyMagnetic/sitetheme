@@ -1,24 +1,25 @@
 {
   "name": "sitetheme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Alloy startertheme for drupal.",
   "main": "index.js",
   "scripts": {
     "build-task:scss-compile": "node-sass --output css --source-map true --source-map-root ./ --include-path=node_modules scss",
     "build-task:autoprefixer": "postcss css/*.css -m --use autoprefixer -d css",
-    "sass:build": "npm-run-all -p build-task:*",
+    "sass:build": "npm-run-all -s build-task:*",
     "sass:watch": "chokidar 'scss/**/*.scss' -c 'npm run sass:build'",
-    "dev": "npm-run-all -p sass:*"
+    "dev": "npm-run-all -p sass:*",
+    "start": "npm run dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^7.1.1",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "chokidar-cli": "^1.2.0",
-    "node-sass-chokidar": "^0.0.3",
+    "node-sass-chokidar": "^1.3.0",
     "npm-run-all": "^4.0.2",
-    "postcss-cli": "^4.1.0"
+    "postcss-cli": "^6.1.2"
   }
 }
