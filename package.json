@@ -6,9 +6,10 @@
   "scripts": {
     "build-task:scss-compile": "node-sass --output css --source-map true --source-map-root ./ --include-path=node_modules scss",
     "build-task:autoprefixer": "postcss css/*.css -m --use autoprefixer -d css",
-    "sass:build": "npm-run-all -p build-task:*",
+    "sass:build": "npm-run-all -s build-task:*",
     "sass:watch": "chokidar 'scss/**/*.scss' -c 'npm run sass:build'",
-    "dev": "npm-run-all -p sass:*"
+    "dev": "npm-run-all -p sass:*i",
+    "start": "npm run dev"
   },
   "keywords": [],
   "author": "",
