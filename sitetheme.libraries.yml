@@ -17,6 +17,9 @@ framework:
     bootstrap/js/scrollspy.js: {}
     bootstrap/js/tab.js: {}
     bootstrap/js/transition.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
 
 slick:
   css:
