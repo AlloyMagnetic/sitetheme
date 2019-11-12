@@ -1,23 +1,10 @@
-global-styling:
+framework:
   css:
     theme:
       css/bootstrap.css: {}
       css/style.css: {}
   js:
     js/sitetheme.js: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.once
-
-slick:
-  css:
-    theme:
-      css/slick.css: {}
-  js:
-    js/slick.js: {}
-
-bootstrap-scripts:
-  js:
     bootstrap/js/affix.js: {}
     bootstrap/js/alert.js: {}
     bootstrap/js/button.js: {}
@@ -30,3 +17,16 @@ bootstrap-scripts:
     bootstrap/js/scrollspy.js: {}
     bootstrap/js/tab.js: {}
     bootstrap/js/transition.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+
+slick:
+  css:
+    theme:
+      css/slick.css: {}
+  js:
+    js/slick.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
