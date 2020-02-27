@@ -11,6 +11,41 @@ if(typeof(CKEDITOR) !== 'undefined') {
   CKEDITOR.addStylesSet( 'sitetheme',
   [
     {
+      name : 'Image on Left',
+      type: 'widget',
+      widget: 'image',
+      attributes : { 'class': 'left-image' }
+    },
+
+    {
+      name : 'Image on Right',
+      type: 'widget',
+      widget: 'image',
+      attributes : { 'class': 'right-image' }
+    },
+
+    {
+      name: 'Centered image',
+      type: 'widget',
+      widget: 'image',
+      attributes: { 'class': 'center-image' }
+    },
+
+    {
+      name: 'Big image',
+      type: 'widget',
+      widget: 'image',
+      attributes: { 'class': 'big-image' }
+    },
+
+    {
+      name: 'Image border',
+      type: 'widget',
+      widget: 'image',
+      attributes: { 'class': 'border-image' }
+    },
+
+    {
       name: 'Large Body',
       element : ['div', 'p', 'ul', 'ol'],
       attributes : { 'class': 'lead' }
