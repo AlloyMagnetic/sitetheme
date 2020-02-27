@@ -77,3 +77,16 @@
     font-size: $desktop-font-size-lead;
   }
 }
+
+@mixin responsive($property, $xs, $sm, $md: $sm, $lg: $md) {
+  #{$property}: $xs;
+  @media (min-width: #{$screen-sm-min}) {
+    #{$property}: $sm;
+  }
+  @media (min-width: #{$screen-md-min}) {
+    #{$property}: $md;
+  }
+  @media (min-width: #{$screen-lg-min}) {
+    #{$property}: $lg;
+  }
+}
