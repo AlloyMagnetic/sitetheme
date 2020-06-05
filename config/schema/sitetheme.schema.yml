@@ -2,4 +2,4 @@
 
 sitetheme.settings:
   type: theme_settings
-  label: 'Site Theme settings'
+  label: 'sitetheme settings'

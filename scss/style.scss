@@ -7,20 +7,24 @@
 // Site styles
 @import "content";
 @import "components/navigation";
-@import "components/footer";
-@import "components/tile";
-@import "components/assembly-tiles";
-@import "components/social-shares";
-@import "components/billboards";
-@import "components/assembly-image-with-content";
-@import "components/logo";
-@import "components/assembly-logos";
-@import "components/text-tile";
-@import "components/assembly-tiles-with-content";
-@import "components/blog-post";
-@import "components/author-block";
-@import "components/assembly-content-with-aside";
 @import "components/landing-page";
+@import "components/blog-post";
+@import "components/social-shares";
+@import "components/author-block";
+@import "components/billboards";
+@import "components/sidebar";
+@import "components/footer";
+
+@import "components/tile";
+@import "components/logo";
+@import "components/text-tile";
+
+@import "components/assembly";
+@import "components/assembly-tiles";
+@import "components/assembly-image-with-content";
+@import "components/assembly-logos";
+@import "components/assembly-tiles-with-content";
+@import "components/assembly-content-with-aside";
 @import "components/assembly-call-to-action";
 
 

@@ -1,3 +1,7 @@
+$desktop-space: 80px;
+$tablet-space: $desktop-space/2;
+$mobile-space: $desktop-space/2;
+
 body {
   letter-spacing: $letter-spacing-base;
   &.cke_editable {
@@ -19,10 +23,17 @@ html, body {
   flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
 }
 
+.region-content {
+  @include responsive(margin-top, $mobile-space, $tablet-space, $desktop-space);
+}
+
+.bottom-spacing {
+  @include responsive(margin-bottom, $mobile-space, $tablet-space, $desktop-space);
+}
+
 .page-footer {
   flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
 }
-
 
 .container {
   max-width: 100%;
@@ -31,7 +42,7 @@ html, body {
     max-width: $container-large-desktop;
   }
   &.narrow, .make-narrow & {
-    @include large {
+    @include desktop {
       max-width: 800px + $grid-gutter-width;
       width: 100%;
     }
@@ -116,17 +127,11 @@ p, ul, ol {
 }
 
 .main-container {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  @include desktop {
-    padding-top: 85px;
-    padding-bottom: 85px;
+  nav.tabs {
+    margin-top: 1.5em;
   }
-  &.slim {
-    padding-bottom: 1em;
-    .tabs--primary.nav-tabs {
-      margin-bottom: 0;
-    }
+  .messages__wrapper {
+    margin-top: 1.5em;
   }
 }
 
@@ -138,44 +143,6 @@ p, ul, ol {
 
 .tabs--primary.nav-tabs {
   margin-bottom: 1.5em;
-}
-
-.assembly {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-size: cover;
-  @include desktop {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  &.no-top-padding {
-    padding-top: 0 !important;
-  }
-  &.no-bottom-padding {
-    padding-bottom: 0 !important;
-  }
-  &.bg-secondary {
-    background-color: $secondary;
-  }
-  &.bg-tertiary {
-    background-color: $tertiary;
-  }
-  &.white-text {
-    color: #FFF;
-    h1, h2, h3, h4, h5, h6,
-    .h1, .h2, .h3, .h4, .h5, .h6 {
-      color: inherit;
-    }
-  }
-  &.border-top {
-    border-top: 3px solid $tertiary;
-  }
-  &.border-bottom {
-    border-bottom: 3px solid $tertiary;
-  }
-  .section-title {
-    margin-top: 0;
-  }
 }
 
 $img-top-text-offset: 4px;
@@ -217,37 +184,3 @@ img {
   height: 100% !important;
 }
 
-.sidebar {
-  margin-bottom: -40px;
-  margin-top: 40px;
-  margin-left: -$grid-gutter-width/2;
-  margin-right: -$grid-gutter-width/2;
-  @include tablet {
-    margin: 0;
-  }
-  &.right {
-    @include desktop {
-      padding-left: 50px;
-    }
-  }
-  &.left {
-    @include desktop {
-      padding-right: 50px;
-    }
-  }
-  .assembly {
-    padding: 40px $grid-gutter-width/2;
-    background-color: $tertiary;
-    border-top: 3px solid $primary;
-    @include desktop {
-      padding: 40px 35px;
-    }
-    .container {
-      @include tablet {
-        width: 100%;
-        padding: 0;
-        max-width: 100%;
-      }
-    }
-  }
-}

@@ -1,11 +1,9 @@
 .view-author.view-display-id-bio_block {
   border-top: 3px solid $tertiary;
-  padding-top: 40px;
-  margin-top: 40px;
-  @include desktop {
-    margin-top: 60px;
-    padding-top: 60px;
-  }
+
+  @include responsive(margin-top, $mobile-space, $tablet-space, $desktop-space);
+  @include responsive(padding-top, $mobile-space, $tablet-space, $desktop-space);
+
   .text-content {
     font-size: 14px;
     @include small {

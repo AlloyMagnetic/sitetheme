@@ -1,7 +1,7 @@
 {
   "name": "sitetheme",
   "version": "1.0.0",
-  "description": "Alloy startertheme for drupal.",
+  "description": "sitetheme Group theme by Alloy.",
   "main": "index.js",
   "scripts": {
     "build-task:scss-compile": "node-sass --output css --source-map true --source-map-root ./ --include-path=node_modules scss",
