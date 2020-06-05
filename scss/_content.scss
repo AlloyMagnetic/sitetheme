@@ -27,7 +27,7 @@ html, body {
   @include responsive(margin-top, $mobile-space, $tablet-space, $desktop-space);
 }
 
-.bottom-spacing {
+.page-spacing {
   @include responsive(margin-bottom, $mobile-space, $tablet-space, $desktop-space);
 }
 

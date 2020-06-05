@@ -108,6 +108,10 @@
       {# Content Section #}
       <section{{ content_attributes.addClass(content_classes) }}>
 
+        {% if page_level_container %}
+          <div class="page-spacing"></div>
+        {% endif %}
+
         {# Header #}
         {% if page.header %}
           {% block header %}
@@ -126,7 +130,7 @@
       </section> {# End Content Section #}
 
       {% if page_level_bottom_spacing %}
-        <div class="bottom-spacing"></div>
+        <div class="page-spacing"></div>
       {% endif %}
 
       {% if page_level_container %}

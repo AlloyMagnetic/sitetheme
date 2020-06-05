@@ -6,7 +6,7 @@ dependencies:
 id: sitetheme_local_tasks
 theme: sitetheme
 region: header
-weight: 0
+weight: -4
 provider: null
 plugin: local_tasks_block
 settings:

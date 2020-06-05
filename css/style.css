@@ -35,16 +35,16 @@ html, body, :host {
     .region-content {
       margin-top: 80px; } }
 
-.bottom-spacing {
+.page-spacing {
   margin-bottom: 40px; }
   @media (min-width: 768px) {
-    .bottom-spacing {
+    .page-spacing {
       margin-bottom: 40px; } }
   @media (min-width: 992px) {
-    .bottom-spacing {
+    .page-spacing {
       margin-bottom: 80px; } }
   @media (min-width: 1230px) {
-    .bottom-spacing {
+    .page-spacing {
       margin-bottom: 80px; } }
 
 .page-footer {

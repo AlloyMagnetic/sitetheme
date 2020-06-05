@@ -6,7 +6,7 @@ dependencies:
 id: sitetheme_page_title
 theme: sitetheme
 region: header
-weight: -1
+weight: -2
 provider: null
 plugin: page_title_block
 settings:
