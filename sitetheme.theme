@@ -66,7 +66,7 @@ function sitetheme_preprocess_page(&$variables) {
 
   // Provide container when the node template doesn't handle it
   $variables['page_level_container'] = true;
-  if (\Drupal::routeMatch()->getRouteName() == 'entity.node.canonical') {
+  if ($route = \Drupal::routeMatch()->getRouteName() && in_array($route, ['entity.node.canonical', 'entity.node.revision'])) {
     $variables['page_level_container'] = false;
     unset($variables['page']['header'][$theme_name . '_page_title']);
   }
