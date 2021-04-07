@@ -12,7 +12,7 @@ weight: 0
 provider: null
 plugin: notification_bar_block
 settings:
-  id: notification_bar_block
+  id: sitetheme_notification_bar_block
   label: 'Notification Bar block'
   provider: notification_bar
   label_display: '0'
