@@ -5,7 +5,7 @@ dependencies:
     - notification_bar
   theme:
     - sitetheme
-id: notificationbarblock
+id: sitetheme_notificationbarblock
 theme: sitetheme
 region: pre_page
 weight: 0
