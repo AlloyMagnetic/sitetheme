@@ -1,0 +1,17 @@
+.container>.navbar .navbar-brand, .navbar>.container .navbar-brand.navbar-brand {
+  margin-left: calc($gap / 2);
+  @include desktop {
+    margin-left: 0;
+  }
+}
+
+.navbar-brand {
+  img, svg {
+    margin-right: $gap;
+  }
+}
+
+.masthead {
+  padding-top: calc($gap/2);
+  padding-bottom: calc($gap/2);
+}

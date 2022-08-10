@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+@import "variables";
+
+// @import "node_modules/bulma/bulma.sass";
+// import components individually
+// TODO: eliminate unneeded components
+@import "bulma_sass/utilities/_all";
+@import "bulma_sass/base/_all";
+@import "bulma_sass/elements/_all";
+@import "bulma_sass/form/_all";
+@import "bulma_sass/components/_all";
+@import "bulma_sass/grid/_all";
+@import "bulma_sass/layout/_all";
+
+@import "../../composer/drulma/css/bulma-overrides";
+@import "../../composer/drulma/css/drupal-overrides";
+@import "../../composer/drulma/css/tweaks";
+
+@import "components/all";

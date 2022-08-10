@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Drulma theme implementation for a branding block.
+ */
+#}
+<div{{ attributes.addClass('navbar-brand') }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {% if site_logo %}
+      <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
+        <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      </a>
+    {% endif %}
+    {% if site_name %}
+      <a class="title" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
+    {% endif %}
+    <p class="subtitle">
+      {{ site_slogan }}
+    </p>
+  {% endblock %}
+  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="block-mainnavigation">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+</div>

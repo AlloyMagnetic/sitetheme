@@ -1,0 +1,15 @@
+global:
+  css:
+    theme:
+      css/style.css: {}
+
+bulmajs:
+  js:
+    js/bulma.min.js: {} # only includes dropdown, file, navbar
+
+drulmajs:
+  js:
+    js/drulma.min.js: {}
+  dependencies:
+    - sitetheme/bulmajs
+    - core/drupal
