@@ -1,9 +1,3 @@
-html, body {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
-
 .dialog-off-canvas-main-canvas {
   min-height: 100%;
   display: flex;
@@ -15,7 +9,7 @@ main {
 }
 
 .container {
-  width: 100%;
+  @include container;
 }
 
 body.toolbar-tray-open.toolbar-vertical.toolbar-fixed {

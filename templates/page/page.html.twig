@@ -5,30 +5,19 @@
  */
 #}
 
-{{ page.primary_menu }}
-
-<header{{ header_attributtes }}>
-  <div class="hero-head">
-    {{ page.header }}
-  </div>
-  {% if page.title %}
-  <div class="hero-body">
-    {{ page.title }}
-  </div>
-  {% endif %}
-  <div class="hero-foot">
-    {{ page.secondary_menu }}
-  </div>
-</header>
+{% if page.primary_menu or page.top_bar %}
+  {% include '@sitetheme/includes/masthead.html.twig' with {top_bar: page.top_bar, primary_menu: page.primary_menu} %}
+{% endif %}
 
 <main role="main">
-  <section class="section">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-    {{ page.breadcrumb }}
+    <div class="container">
+      {{ page.breadcrumb }}
 
-    {{ page.highlighted }}
+      {{ page.highlighted }}
 
-    {{ page.help }}
+      {{ page.help }}
+    </div>
 
     {% if wrap_content_in_container %}
     <div class="container">

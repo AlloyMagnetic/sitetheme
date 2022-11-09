@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\node\NodeInterface;
+
 /**
  * @file
  * Functions to support theming in the Sitetheme theme.
@@ -16,7 +18,12 @@ function sitetheme_preprocess_html(&$variables) {
  * Implements hook_preprocess_HOOK() for page.html.twig.
  */
 function sitetheme_preprocess_page(&$variables) {
+  $route = \Drupal::routeMatch();
 
+  $node = $route->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['wrap_content_in_container'] = FALSE;
+  }
 }
 
 /**

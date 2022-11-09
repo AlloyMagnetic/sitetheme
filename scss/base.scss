@@ -2,8 +2,8 @@
 
 @import "variables";
 
-// @import "node_modules/bulma/bulma.sass";
-// import components individually
+// font imports here
+
 // TODO: eliminate unneeded components
 @import "bulma_sass/utilities/_all";
 @import "bulma_sass/base/_all";
@@ -14,8 +14,12 @@
 @import "bulma_sass/layout/_all";
 @import "bulma_sass/helpers/_all";
 
-@import "../../composer/drulma/css/bulma-overrides";
-@import "../../composer/drulma/css/drupal-overrides";
-@import "../../composer/drulma/css/tweaks";
+@import "../css/bulma-overrides";
+@import "../css/drupal-overrides";
+@import "../css/tweaks";
 
-@import "components/all";
+@import "helpers/mixins";
+
+@import "base/all";
+@import "overrides/all";
+

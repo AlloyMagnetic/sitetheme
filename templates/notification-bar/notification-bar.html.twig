@@ -1,0 +1,15 @@
+{{ attach_library('notification_bar/notification_bar') }}
+
+<section class="notification_bar has-background-link has-text-white">
+  <div class="container">
+    <div class="columns is-vcentered">
+      {% if url %}
+        <div class="column is-8-tablet is-4-desktop">{{ message }}</div>
+        <div class="column is-hidden-mobile is-hidden-tablet-only is-4-desktop spacer-column"></div>
+        <div class="column is-4-tablet is-4-desktop cta"><a class="button is-small is-info is-inverted" href="{{ url }}">{{ button_text|default('Learn more') }}</a></div>
+      {% else %}
+        <div class="column is-12-tablet is-4-desktop">{{ message }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>

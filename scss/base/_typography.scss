@@ -1,0 +1,28 @@
+@for $i from 1 through 6 {
+  h#{$i},
+  .h#{$i} {
+    font-weight: bold;
+    line-height: $headings-line-height;
+    font-family: $headings-family;
+    margin-bottom: 0.75rem;
+    font-size: nth($sizes, $i);
+    + {
+      p, ul, ol {
+        margin-top: 0;
+      }
+    }
+  }
+  p.h#{$i} {
+    &:not(:last-child) {
+      margin-bottom: 0.75rem;
+    }
+    + {
+      p, ul, ol {
+        margin-top: 0;
+      }
+    }
+  }
+  .is-size-#{$i} {
+    font-weight: bold;
+  }
+}

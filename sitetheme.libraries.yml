@@ -1,7 +1,10 @@
 global:
   css:
     theme:
-      css/style.css: {}
+      css/base.css: {}
+      css/components.css: {}
+      css/nodes.css: {}
+      css/assemblies.css: {}
 
 bulmajs:
   js:

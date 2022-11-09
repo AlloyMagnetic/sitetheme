@@ -8,7 +8,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@vizuaalog/bulmajs": "^0.12.1"
+    "@vizuaalog/bulmajs": "^0.12.1",
+    "gulp-dependents": "^1.2.5"
   },
   "devDependencies": {
     "@sass-collective/rem": "^2.7.0",

@@ -1,5 +1,4 @@
 .container>.navbar .navbar-brand, .navbar>.container .navbar-brand.navbar-brand {
-  margin-left: calc($gap / 2);
   @include desktop {
     margin-left: 0;
   }
@@ -11,7 +10,12 @@
   }
 }
 
+.navbar-burger {
+  margin-right: calc($gap / -2)
+}
+
 .masthead {
   padding-top: calc($gap/2);
   padding-bottom: calc($gap/2);
+  border-bottom: 1px solid #DDD;
 }

@@ -6,10 +6,8 @@ base theme: drulma
 core_version_requirement: ^8.8 || ^9
 
 regions:
+  top_bar: 'Top Bar'
   primary_menu: 'Navbar'
-  header: 'Hero Header'
-  title: 'Hero body (title)'
-  secondary_menu: 'Hero footer (tabs)'
   breadcrumb: 'Breadcrumb'
   highlighted: 'Highlighted'
   help: 'Help'
@@ -27,3 +25,6 @@ libraries-override:
   drulma/drulmajs: sitetheme/drulmajs
   drulma/bulmajs: sitetheme/bulmajs
   drulma/bulma: false
+
+ckeditor_stylesheets:
+  - css/editor.css

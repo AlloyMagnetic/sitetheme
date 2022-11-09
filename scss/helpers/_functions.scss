@@ -1,0 +1,7 @@
+@use "sass:math";
+
+@function rem-calc($value, $base: $rem-base) {
+  // if your default browser font size has changed from 16px, make the appropriate change below
+  $remValue: math.div($value, $base)+0rem;
+  @return $remValue;
+}

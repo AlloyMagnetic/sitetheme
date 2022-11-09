@@ -4,10 +4,11 @@ let gulp = require('gulp'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('gulp-cssnano'),
+  dependents = require('gulp-dependents'),
   minify = require('gulp-minify'); // for js
 const paths = {
   scss: {
-    src: './scss/style.scss',
+    src: './scss/*.scss',
     dest: './css',
     watch: './scss/**/*.scss',
   },
@@ -33,21 +34,22 @@ const autoprefixer_options = {
 }
 
 // Compile sass into CSS & auto-inject into browsers
-function styles() {
-  return gulp.src([paths.scss.src])
+function styles(cb) {
+  return gulp.src([paths.scss.src, paths.scss.watch], { since: gulp.lastRun(styles) })
+    .pipe(dependents())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(cssnano()) // minify CSS
     .pipe(postcss([require('autoprefixer')(autoprefixer_options)]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.scss.dest))
+    .on('end', cb)
 }
 
 // Move the javascript files into our js folder
 function js() {
-  return gulp.src([paths.js.bulmajs, paths.js.drulmajs])
-
-    .pipe(minify({ ext: { min: '.min.js' }, noSource: true }))
+  return gulp.src([paths.js.bulmajs])
+    .pipe(cached('sasscache'))
     .pipe(gulp.dest(paths.js.dest))
 }
 
@@ -56,7 +58,7 @@ function serve() {
   gulp.watch([paths.scss.watch], styles)
 }
 
-const build = gulp.series(styles, gulp.parallel(js, serve))
+const build = gulp.series(gulp.parallel(styles, serve))
 
 exports.styles = styles
 exports.js = js
