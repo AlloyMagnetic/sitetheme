@@ -7,7 +7,7 @@ dependencies:
     - sitetheme
 id: sitetheme_breadcrumbs
 theme: sitetheme
-region: content
+region: breadcrumb
 weight: -6
 provider: null
 plugin: system_breadcrumb_block

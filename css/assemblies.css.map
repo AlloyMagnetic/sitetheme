@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"assemblies.css","sourcesContent":[]}
+{"version":3,"sources":["assemblies/_all.scss"],"names":[],"mappings":"AAAA,gBACE,UAAA,CAGF,UACE,eAAA,CAAA,kBACA","file":"assemblies.css","sourcesContent":[".has-background {\n  color: #FFF;\n}\n\n.assembly {\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n"]}

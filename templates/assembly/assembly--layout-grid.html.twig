@@ -1,0 +1,20 @@
+<div{{ attributes.addClass('assembly') }}>
+  {{ title_suffix }}
+  <div class="container">
+    {% if content.field_title %}
+      <{{ title_element }} class="layout-title">{{ content.field_title }}</{{ title_element}}>
+    {% endif %}
+    <div class="row">
+      {% if content %}
+        <div class="columns is-multiline">
+        {% for i in content.field_grid_items['#items']|keys %}
+          <div class="column is-6-tablet is-3-desktop">
+            {{ content.field_grid_items[i] }}
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
+      {{- content|without('field_title', 'field_grid_items') -}}
+    </div>
+  </div>
+</div>

@@ -32,3 +32,60 @@ function sitetheme_preprocess_page(&$variables) {
 function sitetheme_preprocess_node(&$variables) {
 
 }
+
+function sitetheme_preprocess_assembly(&$variables)
+{
+  $assembly = $variables['elements']['#assembly'];
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  $type = $assembly->bundle();
+
+  if ($type == 'layout_split') {
+    $variables['attributes']->addClass($assembly->field_split_layout->value);
+    $left_classes = ['column'];
+    $right_classes = ['column'];
+    switch ($assembly->field_split_layout->value) {
+      case 'layout-50-50':
+        $left_classes[] = 'is-6';
+        $right_classes[] = 'is-6';
+        break;
+      case 'layout-33-67':
+        $left_classes[] = 'is-4';
+        $right_classes[] = 'is-8';
+        break;
+      case 'layout-67-33':
+        $left_classes[] = 'is-8';
+        $right_classes[] = 'is-4';
+        break;
+      case 'layout-25-75':
+        $left_classes[] = 'is-3';
+        $right_classes[] = 'is-9';
+        break;
+      case 'layout-75-25':
+        $left_classes[] = 'is-9';
+        $right_classes[] = 'is-3';
+        break;
+      case 'layout-50-50-r':
+        $left_classes[] = 'is-6 order-2';
+        $right_classes[] = 'is-6 order-1';
+        break;
+      case 'layout-33-67-r':
+        $left_classes[] = 'is-4 order-2';
+        $right_classes[] = 'is-8 order-1';
+        break;
+      case 'layout-67-33-r':
+        $left_classes[] = 'is-8 order-2';
+        $right_classes[] = 'is-4 order-1';
+        break;
+      case 'layout-25-75-r':
+        $left_classes[] = 'is-3 order-2';
+        $right_classes[] = 'is-9 order-1';
+        break;
+      case 'layout-75-25-r':
+        $left_classes[] = 'is-9 order-2';
+        $right_classes[] = 'is-3 order-1';
+        break;
+    }
+    $variables['left_classes'] = implode(' ', $left_classes);
+    $variables['right_classes'] = implode(' ', $right_classes);
+  }
+}

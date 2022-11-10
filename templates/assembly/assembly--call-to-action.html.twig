@@ -1,0 +1,34 @@
+<div{{ attributes.addClass('assembly') }}>
+  {{ title_suffix }}
+  {% if view_mode != 'layout_item' %}
+  <div class="container">
+  {% endif %}
+    {% if content.field_text|render and content.field_link|render %}
+    <div class="columns is-vcentered">
+      <div class="column left-col">
+    {% endif %}
+
+    {% if content %}
+      {% if content.field_text|render %}
+      <p class="is-size-3">{{ content.field_text }}</p>
+      {% endif %}
+      {{- content|without('field_link')|without('field_text') -}}
+    {% endif %}
+
+    {% if content.field_text|render and content.field_link|render %}
+      </div>
+      <div class="column is-narrow right-col">
+    {% endif %}
+
+    {% if content.field_link|render %}
+      <a href="{{ content.field_link[0]['#url_title'] }}" class="button is-primary"> {{ content.field_link[0]['#title'] }}</a>
+    {% endif %}
+
+    {% if content.field_text|render and content.field_link|render %}
+      </div>
+    </div>
+    {% endif %}
+  {% if view_mode != 'layout_item' %}
+  </div>
+  {% endif %}
+</div>

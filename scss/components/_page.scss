@@ -15,3 +15,8 @@ main {
 body.toolbar-tray-open.toolbar-vertical.toolbar-fixed {
   width: calc(100% - 15rem);
 }
+
+.tabs, .breadcrumb {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

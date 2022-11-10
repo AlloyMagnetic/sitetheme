@@ -7,7 +7,7 @@ dependencies:
     - sitetheme
 id: sitetheme_help
 theme: sitetheme
-region: content
+region: help
 weight: -6
 provider: null
 plugin: help_block
