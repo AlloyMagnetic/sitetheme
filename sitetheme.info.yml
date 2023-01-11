@@ -3,7 +3,7 @@ description: 'A theme using Bulma: a free, open source CSS framework based on Fl
 package: 'Bulma'
 type: theme
 base theme: drulma
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^8.8 || ^9 || ^10
 
 regions:
   top_bar: 'Top Bar'
